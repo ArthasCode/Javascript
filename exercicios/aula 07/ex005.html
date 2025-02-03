@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: yellowgreen;
+            margin: 0;
+        }
+        input{
+            background-color: blue;
+            color: red;
+        }
+        input::placeholder{
+            color: rgba(255, 0, 0, 0.775);
+        }
+        label{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <input type="number" oninput="soma(); mult(); maior()" name="num" id="inum" placeholder="Escreva um número" max="10" size="50"><br>
+            <input type="number" oninput="soma(); mult(); maior()" name="num" id="inum2" placeholder="Escreva um número" max="10"><br>
+        </fieldset>
+        <p id="somar">soma:</p>
+        <p id="multiplicar">multiplicação:</p>
+        <p id="max">maior:</p>
+        <input type="button" onclick="mult()" value="Multiplicar">
+        <fieldset>
+            <label><input type="radio" name="caixa" id="laranja">Laranja</label>
+            <label><input type="radio" name="caixa" id="uva">Uva</label>
+            <label><input type="radio" name="caixa" id="abacaxi">Abacaxi</label>
+            <label><input type="radio" name="caixa" id="maçã">Maçã</label>
+            <input type="button" onclick="melhor()" value="Melhor fruta"> 
+            <p id="melhores">Para você, qual a melhor fruta?</p>
+        </fieldset>
+       
+    </form>
+    <script> 
+      
+        function soma(){
+            var num1=Number(document.getElementById('inum').value);       
+            var num2=Number(document.getElementById('inum2').value);
+            var soma=num1 +num2
+            document.getElementById('somar').innerText="soma: "+ soma;
+        }
+        function mult(){
+            var num1=Number(document.getElementById('inum').value);       
+            var num2=Number(document.getElementById('inum2').value);
+            document.getElementById('multiplicar').innerText=`multiplicação: ${num1 * num2}`
+        }
+        function maior(){
+            var num1=Number(document.getElementById('inum').value);       
+            var num2=Number(document.getElementById('inum2').value);
+            var max=num1>num2 ? num1 : num2
+            document.getElementById('max').innerText=`maior: ${max}`
+        }
+        function melhor(){
+            var fruta = document.querySelector("input[name='caixa']:checked ")
+        
+            var melhores=document.getElementById('melhores')
+           
+            if (fruta){
+                melhores.innerHTML=`Para você, qual a melhor fruta?<br> Você gosta de ${fruta.id} então `
+            }
+            else{
+                melhores.innerHTML="Para você, qual a melhor fruta?<br> Você não gosta de nada?"
+            }
+        
+        }
+    </script>
+</body>
+</htm
