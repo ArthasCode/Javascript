@@ -18,6 +18,7 @@
             border: 2px solid black;
             text-align: center;
             cursor: pointer;
+            color:red;
         }
     </style>
 </head>
@@ -25,9 +26,19 @@
     <h1>Iniciando estudos com DOM</h1>
     <p>aqui vai o resultado</p>
     <p>Aprendendo a usar <strong>DOM</strong> em JavaScript</p>
-    <div>Clique em mim</div>
+    <div name="msg">Clique em mim</div>
     <script>
+        var p1=document.getElementsByTagName("p")[1]
+        
+        window.document.write("Está escrito assim: "+p1.innerHTML )
 
-    </script>
+        // var div=document.getElementById('msg')
+        // div.style.background="darkred" 
+        var div=document.getElementsByName('msg')[0]
+        div.style.background= 'purple'
+        div.addEventListener('click',()=>{
+            window.alert('Olá!')
+        })
+        </script>
 </body>
 </html>
