@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idade e Sexo</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        :root{
+            --fundo:#5FCBFF;
+            --Titulo:#FFB75E;
+            --sombra:#57360D;
+            --fundo_2:#5BA0C2;
+        }
+        html, body{
+            background-color: var(--fundo);
+            display: grid;
+            place-items: center;
+            height: 100%;
+        }
+        main{
+            display: flex;
+            padding: 10px;
+            width: 500px;
+            height: fit-content;
+            background-color: white;
+            
+            box-shadow: 2px 2px 1px var(--sombra);
+            align-items: start;
+            flex-flow: column wrap;
+        }
+        h1{
+            border-radius: 10px 10px 0px 0px;
+            background-color: var(--fundo_2);
+            color: var(--Titulo);
+            text-align: center;
+            padding: 10px;
+            box-shadow: 2px 2px 1px var(--sombra);
+            font-variant: small-caps;
+        }
+        input{
+            margin: 10px;
+        }
+        label{
+            font-size: 20px;
+        }
+        #erro{
+            display: none;
+            background-color: rgb(255, 0, 0);
+            color: rgba(0, 0, 0, 0.31);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+            border-radius: 10px;
+            border: 3px dashed darkred;
+            align-self: center;
+        }
+        #div-ano{
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+        }
+        #ano{
+            
+            flex: auto;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        #ano:focus-within ,#ano:hover{
+            background-color: var(--fundo_2);
+            color: var(--Titulo);
+            cursor: pointer;
+        }
+        input[type=button]{
+            
+            padding: 10px;
+            box-shadow: 1px 1px 1px var(--sombra);
+            font:normal 16px Arial;
+            border-radius: 10px;
+            transition:transform .3s ease, box-shadow .5s ease;
+        }
+        input[type=button]:hover{
+            position: relative;
+            box-shadow: 2px 2px 2px var(--sombra);
+            background-color: var(--fundo);
+            cursor: pointer;
+            color: var(--Titulo);
+            transform: translate(-1px,-1px);
+        }
+        .campo{
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #imagem{
+            align-self: center;
+            border-radius: 50%;
+            flex: auto;
+            width: 150px;
+            height: 150px;
+        }
+        #rodape{
+            text-align: center;
+            background-color: var(--sombra);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 2px 2px 1px var(--sombra);
+            color:var(--Titulo)
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <header>
+            <h1>registre-se</h1>
+        </header>
+        <main>
+           
+            <div id="div-ano">
+                <label for="ano" id="label-ano">Ano de Nascimento: </label>
+                <input type="date" name="caixa-ano" id="ano">
+            </div>
+            <p id="erro"><strong>Por favor, diga sua idade!</strong></p>
+            
+            <fieldset class="campo">
+                <legend>Sexo</legend> 
+                <label for="M"><input type="radio" name="caixa-sexo" id="M" checked>Masculino</label>
+                <label for="F"><input type="radio" name="caixa-sexo" id="F">Feminino</label>
+            </fieldset>
+            
+            <input type="button" onclick="Enviar()" value="Verificar">
+            <img id="imagem" src="imagens/pexels-1869704-3470618.jpg" alt="anônimo">
+        </main>
+        <footer id="rodape">&copy; CursoemVideo</footer>
+    </div>
+    <script>
+        function Enviar(){
+            let ano = document.getElementById('ano').value
+            let sexo= document.querySelector('input[name="caixa-sexo"]:checked')
+            let error= document.getElementById('erro')
+
+            // Testa se "ano" tem valor válido
+            if(!ano){
+                error.style.display='block'
+                
+                return
+            }
+
+            if(ano && error.style.display=='block'){
+                error.style.display='none'
+            }
+
+            let dataNascimento=new Date(ano) 
+            let hoje=new Date()
+
+            let idade=hoje.getFullYear() - dataNascimento.getFullYear()
+
+            // Ajustar caso não tenha feito aniversário
+            let aniversario=new Date(hoje.getFullYear(), dataNascimento.getMonth(), dataNascimento.getDate())
+            if (hoje < aniversario){
+                idade--
+            }
+           
+            if (sexo.id=='M'){
+                if (idade<18){
+
+                }
+            }else{
+
+            }
+        }
+    </script>
+</body>
+</html>
