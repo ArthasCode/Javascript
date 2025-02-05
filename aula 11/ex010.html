@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condição</title>
+</head>
+<body>
+    <h1>Teste de Velocidade</h1>
+    <label>Velocidade do carro: <input type="number" name="vel" id="vel"> Km/h</label><br>
+    <input type="button" onclick="teste()" value="Verificar">
+    <p id="resultado"></p>
+    <script>
+        function teste(){
+            var vel=Number(document.getElementById('vel').value)      
+            if (vel>60){
+                document.getElementById("resultado").innerHTML="Você está acima do limite de velocidade. <strong>Multado!</strong>"
+            }else{
+                document.getElementById("resultado").innerText="Pode passar!"
+            }
+        }
+    </script>
+</body>
+</html>
