@@ -97,8 +97,22 @@
             align-self: center;
             border-radius: 50%;
             flex: auto;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
+            flex: none;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.529);
+            border: 2px solid black;
+        }
+        figure{
+            display: grid;
+            place-items: center;
+            align-self: stretch;
+            text-align: center;
+        }
+        figcaption{
+            padding: 10px;
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
         }
         #rodape{
             text-align: center;
@@ -107,6 +121,7 @@
             box-shadow: 2px 2px 1px var(--sombra);
             color:var(--Titulo)
         }
+
     </style>
 </head>
 <body>
@@ -129,7 +144,10 @@
             </fieldset>
             
             <input type="button" onclick="Enviar()" value="Verificar">
-            <img id="imagem" src="imagens/pexels-1869704-3470618.jpg" alt="anônimo">
+            <figure>
+                <figcaption id="legenda-imagem">Qual sua idade e sexo?</figcaption>
+                <img id="imagem" src="images/pexels-1869704-3470618.jpg" alt="anônimo">
+            </figure>
         </main>
         <footer id="rodape">&copy; CursoemVideo</footer>
     </div>
@@ -138,7 +156,8 @@
             let ano = document.getElementById('ano').value
             let sexo= document.querySelector('input[name="caixa-sexo"]:checked')
             let error= document.getElementById('erro')
-
+            let image= document.getElementById('imagem')
+            let legend=document.getElementById('legenda-imagem')
             // Testa se "ano" tem valor válido
             if(!ano){
                 error.style.display='block'
@@ -160,13 +179,35 @@
             if (hoje < aniversario){
                 idade--
             }
-           
+            if (idade!=1){
+                legend.innerHTML=`Você tem <strong>${idade}</strong> anos`
+            }else{
+                legend.innerHTML=`Você tem <strong>${idade}</strong> ano`
+            }
+            if (idade>=90){
+                image.src="images/caveira.jpg"
+                return
+            }
             if (sexo.id=='M'){
-                if (idade<18){
-
+                if (idade<10){   
+                    image.src="images/homem-crianca.jpg"
+                }else if (idade<22){
+                    image.src="images/homem-adolescente.jpg"
+                }else if (idade<50){
+                    image.src="images/homem-adulto.jpg"
+                }else{
+                    image.src="images/homem-idoso.jpg"
                 }
             }else{
-
+                if (idade<10){
+                    image.src="images/mulher-crianca.jpg"
+                }else if (idade<22){
+                    image.src="images/mulher-adolescente.jpg"
+                }else if (idade<50){
+                     image.src="images/mulher-adulta.jpg"
+                }else{
+                     image.src="images/mulher-idosa.jpg"
+                }
             }
         }
     </script>
