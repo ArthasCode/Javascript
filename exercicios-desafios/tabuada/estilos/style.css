@@ -1,24 +1,26 @@
 @charset "UTF-8";
 
-html, body{
+html,
+body {
     height: 100%;
     background-color: cyan;
 }
 
 
-body{
+body {
     display: grid;
     place-items: center;
 }
 
 
-div#content{
-    width: 500px;
+div#content {
     height: fit-content;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 
-header{
+header {
     background-color: brown;
     padding: 1px;
     border-radius: 10px 10px 0 0;
@@ -29,21 +31,24 @@ header{
 }
 
 
-main{
+main {
     background-color: white;
     height: 400px;
     overflow: auto;
-    border-radius: 0 0 10px 10px;
-    padding: 10px;
+    
+    padding: 0 10px 10px 10px;
 }
 
 
-select{
+select {
     display: block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
 }
 
 
-label{
+label {
     display: block;
     width: fit-content;
     background-color: cyan;
@@ -53,8 +58,27 @@ label{
     border-radius: 10px;
     text-align: center;
 }
-input[type='button']{
+
+input[type='button'] {
     display: block;
     font-size: 1.2em;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+div#calculo {
+    position: sticky;
+    top:0;
+    background-color: aqua;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(225, 92, 92);
+    padding: 1px;
+    border-radius: 0 0 10px 10px;
 }
